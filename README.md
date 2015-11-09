@@ -6,7 +6,7 @@ existing routes.
 ## Installation
 1. Install MixPanel via composer:
   ```sh
-  composer require emergingdzns/laravel-mixpanel:~0.4.3
+  composer require emergingdzns/laravel-mixpanel:~0.4.15
   ```
 
 2. Add the service provider entry in `config\app.php`:
@@ -26,6 +26,32 @@ existing routes.
           'token' => env('MIXPANEL_TOKEN'),
       ],
   ```
+  Optional:
+
+  If there are events you would like to prevent from tracking, such as Page View or Session, add the following to the
+  `mixpanel` array you just added to `config\services.php`:
+  ```
+    'disabled_events' => ['Page View','Session'],
+  ```
+
+  If there is additional user data you would like to add to the user `Session` tracking, you must create a helper
+  function (see Laravel docs for helpers) and then add a line like the following to the same `mixpanel` array you
+  created above.
+  ```
+    'appendData' => 'addToSessionTrackingData'
+  ```
+  NOTE: The helper function should return a single dimension array of variables. For example:
+  ```
+  if (!function_exists('addToSessionTrackingData')) {
+    function addToSessionTrackingData()
+    {
+        $custom_id = (int) Auth::user()->custom_related_table_id;
+        $customData = Models\MyCustomData::find($custom_id);
+        return ['Custom Field 1' => $customData->field_1,'Custom Field 2' => $customData->field_2];
+    }
+  }
+  ```
+
 
 3. If to track the user's names, make sure a `name` attribute is available on your user model. For example, if you only
   have a `username` field that contains the users' first and last names, you could add the following to your user model:
