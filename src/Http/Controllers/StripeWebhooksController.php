@@ -1,9 +1,9 @@
-<?php namespace GeneaLabs\LaravelMixpanel\Http\Controllers;
+<?php namespace Emergingdzns\LaravelMixpanel\Http\Controllers;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Exception;
-use GeneaLabs\LaravelMixpanel\LaravelMixpanel;
+use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;

@@ -1,6 +1,6 @@
-<?php namespace GeneaLabs\LaravelMixpanel\Listeners;
+<?php namespace Emergingdzns\LaravelMixpanel\Listeners;
 
-use GeneaLabs\LaravelMixpanel\LaravelMixpanel;
+use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Events\Dispatcher;
@@ -108,9 +108,9 @@ class LaravelMixpanelEventHandler
      */
     public function subscribe(Dispatcher $events)
     {
-        $events->listen('auth.attempt', 'GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLoginAttempt');
-        $events->listen('auth.login', 'GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogin');
-        $events->listen('auth.logout', 'GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogout');
-        $events->listen('router.matched', 'GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onViewLoad');
+        $events->listen('auth.attempt', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLoginAttempt');
+        $events->listen('auth.login', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogin');
+        $events->listen('auth.logout', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogout');
+        $events->listen('router.matched', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onViewLoad');
     }
 }

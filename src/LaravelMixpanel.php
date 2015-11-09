@@ -1,4 +1,4 @@
-<?php namespace GeneaLabs\LaravelMixpanel;
+<?php namespace Emergingdzns\LaravelMixpanel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;

@@ -1,8 +1,8 @@
-<?php namespace GeneaLabs\LaravelMixpanel\Providers;
+<?php namespace Emergingdzns\LaravelMixpanel\Providers;
 
-use GeneaLabs\LaravelMixpanel\LaravelMixpanel;
-use GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler;
-use GeneaLabs\LaravelMixpanel\Listeners\LaravelMixpanelUserObserver;
+use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
+use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler;
+use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelUserObserver;
 use Illuminate\Auth\Guard;
 use Illuminate\Support\Facades\Event;
 use Illuminate\HTTP\Request;

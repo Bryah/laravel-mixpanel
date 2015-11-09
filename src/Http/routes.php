@@ -1,6 +1,6 @@
 <?php
 
-use GeneaLabs\LaravelMixpanel\Http\Controllers\StripeWebhooksController;
+use Emergingdzns\LaravelMixpanel\Http\Controllers\StripeWebhooksController;
 use Illuminate\Support\Facades\View;
 
-Route::controller('genealabs/laravel-mixpanel/stripe', StripeWebhooksController::class);
+Route::controller('emergingdzns/laravel-mixpanel/stripe', StripeWebhooksController::class);

@@ -1,16 +1,16 @@
 {
-  "name": "genealabs/laravel-mixpanel",
+  "name": "emergingdzns/laravel-mixpanel",
   "description": "MixPanel wrapper for Laravel 5.",
   "license": "MIT",
   "authors": [
     {
-      "name": "Mike Bronner",
+      "name": "Emerging Designs and Mike Bronner",
       "email": "hello@genealabs.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "GeneaLabs\\LaravelMixpanel\\": "src/"
+      "Emergingdzns\\LaravelMixpanel\\": "src/"
     }
   },
   "require": {
@@ -28,7 +28,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "GeneaLabs\\LaravelMixpanel\\Tests\\": "tests/"
+      "Emergingdzns\\LaravelMixpanel\\Tests\\": "tests/"
     }
   }
 }
