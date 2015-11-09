@@ -78,6 +78,7 @@ class LaravelMixpanelEventHandler
             }
         }
         array_filter($data);
+
         $this->mixPanel->identify($user->getKey());
         $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
         $this->mixPanel->track('Session', ['Status' => 'Logged In']);
