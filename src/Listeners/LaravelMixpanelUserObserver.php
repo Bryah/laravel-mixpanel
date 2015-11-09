@@ -1,6 +1,6 @@
-<?php namespace GeneaLabs\LaravelMixpanel\Listeners;
+<?php namespace Emergingdzns\LaravelMixpanel\Listeners;
 
-use GeneaLabs\LaravelMixpanel\LaravelMixpanel;
+use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
