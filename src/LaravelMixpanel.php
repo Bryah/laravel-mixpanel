@@ -37,7 +37,7 @@ class LaravelMixpanel extends \Mixpanel
      */
     public function track($event, $properties = [])
     {
-        if (!in_array($event, config('services.mixpanel.disabled_events'))) {
+        if (!in_array($event, config('services.mixpanel.disabled_events')) || !config('services.mixpanel.disabled_events')) {
             $browserInfo = new Browser();
             $osInfo = new Os();
             $deviceInfo = new Device();
