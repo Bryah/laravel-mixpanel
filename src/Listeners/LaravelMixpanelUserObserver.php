@@ -47,7 +47,7 @@ class LaravelMixpanelUserObserver
         array_filter($data);
 
         if (count($data)) {
-            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip());
+            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
         }
 
         $this->mixPanel->track('User', ['Status' => 'Registered']);
@@ -81,7 +81,7 @@ class LaravelMixpanelUserObserver
         array_filter($data);
 
         if (count($data)) {
-            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip());
+            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
         }
     }
 

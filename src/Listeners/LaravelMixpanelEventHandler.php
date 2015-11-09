@@ -71,7 +71,7 @@ class LaravelMixpanelEventHandler
         ];
         array_filter($data);
         $this->mixPanel->identify($user->getKey());
-        $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip());
+        $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
         $this->mixPanel->track('Session', ['Status' => 'Logged In']);
     }
 
@@ -94,11 +94,12 @@ class LaravelMixpanelEventHandler
     {
         if (Auth::check()) {
             $this->mixPanel->identify(Auth::user()->getKey());
-            $this->mixPanel->people->set(Auth::user()->getKey(), [], $this->request->ip());
+            $this->mixPanel->people->set(Auth::user()->getKey(), [], $this->request->ip);
         }
 
         $routeAction = $route->getAction();
         $route = (is_array($routeAction) && array_key_exists('as', $routeAction) ? $routeAction['as'] : null);
+
         $this->mixPanel->track('Page View', ['Route' => $route]);
     }
 
