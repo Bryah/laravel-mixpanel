@@ -35,7 +35,6 @@ class LaravelMixpanel extends \Mixpanel
      *
      * @internal param array $data
      */
-
     public function track($event, $properties = [])
     {
         if (!in_array($event, config('services.mixpanel.disabled_events')) || !config('services.mixpanel.disabled_events')) {
