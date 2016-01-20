@@ -3,30 +3,24 @@
 use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
 use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler;
 use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelUserObserver;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Event;
 use Illuminate\HTTP\Request;
 use Illuminate\Support\ServiceProvider;
-
 class LaravelMixpanelServiceProvider extends ServiceProvider
 {
     protected $defer = false;
-
     public function boot(Request $request, Guard $guard, LaravelMixpanel $mixPanel)
     {
         include __DIR__ . '/../Http/routes.php';
-
         $this->app->make(config('auth.model'))->observe(new LaravelMixpanelUserObserver($request, $mixPanel));
         $eventHandler = new LaravelMixpanelEventHandler($request, $guard, $mixPanel);
-
         Event::subscribe($eventHandler);
     }
-
     public function register()
     {
         $this->app->singleton(LaravelMixpanel::class);
     }
-
     /**
      * @return array
      */
