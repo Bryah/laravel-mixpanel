@@ -35,8 +35,8 @@ class LaravelMixpanelEventHandler
      */
     public function onUserLoginAttempt(Attempting $event)
     {
-        $email = $event->credentials['email'] ?: '';
-        $password = $event->credentials['password'] ?: '';
+        $email = (array_key_exists('email', $event) ? $event['email'] : '');
+        $password = (array_key_exists('password', $event) ? $event['password'] : '');
 
         $user = App::make(config('auth.model'))->where('email', $email)->first();
 
@@ -73,6 +73,14 @@ class LaravelMixpanelEventHandler
                 ? $user->created_at->format('Y-m-d\Th:i:s')
                 : null),
         ];
+
+        if (config('services.mixpanel.appendData')) {
+            $helperFunction = config('services.mixpanel.appendData');
+            $appendData = $helperFunction();
+            if (count($appendData) > 0) {
+                $data = array_merge($data,$appendData);
+            }
+        }
         array_filter($data);
 
         $this->mixPanel->identify($user->getKey());
