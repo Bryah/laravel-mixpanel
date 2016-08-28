@@ -124,9 +124,16 @@ class LaravelMixpanelEventHandler
      */
     public function subscribe(Dispatcher $events)
     {
+    /* listeners for laravel 5.2 */
         $events->listen('Illuminate\Auth\Events\Attempting', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLoginAttempt');
         $events->listen('Illuminate\Auth\Events\Login', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogin');
         $events->listen('Illuminate\Auth\Events\Logout', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogout');
         $events->listen('Illuminate\Routing\Events\RouteMatched', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onViewLoad');
+	/* listeners for laravel 5.0 */
+		$events->listen('auth.attempt', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLoginAttempt');
+        $events->listen('auth.login', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogin');
+        $events->listen('auth.logout', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onUserLogout');
+        $events->listen('router.matched', 'Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler@onViewLoad');
+
     }
 }
