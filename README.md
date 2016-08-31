@@ -1,17 +1,17 @@
 # MixPanel for Laravel 5
 ## Considerations
-1. This package adds the multiple routes under `emergingdzns/laravel-mixpanel/*`. Please verify that these don't collide with your
+1. This package adds the multiple routes under `bryah/laravel-mixpanel/*`. Please verify that these don't collide with your
 existing routes.
 
 ## Installation
 1. Install MixPanel via composer:
   ```sh
-  composer require emergingdzns/laravel-mixpanel:~0.4.15
+  composer require bryah/laravel-mixpanel:~0.4.15
   ```
 
 2. Add the service provider entry in `config\app.php`:
   ```php
-          'Emergingdzns\LaravelMixpanel\Providers\LaravelMixpanelServiceProvider',
+          'Bryah\LaravelMixpanel\Providers\LaravelMixpanelServiceProvider',
   ```
 
 ## Configuration
@@ -65,7 +65,7 @@ existing routes.
 4. We need to disable CSRF checking for the stripe webhook endpoints. To do that, open
  `app/HTTP/Middleware/VerifyCsrfToken.php` and add the following above the return statement:
   ```php
-          if ($request->is('emergingdzns/laravel-mixpanel/*')) {
+          if ($request->is('bryah/laravel-mixpanel/*')) {
               return $next($request);
           }
   ```
@@ -73,7 +73,7 @@ existing routes.
 5. Configure Stripe webhook (if you're using Stripe):
   Log into your Stripe account: https://dashboard.stripe.com/dashboard, and open your account settings' webhook tab:
 
-  Enter your MixPanel webhook URL, similar to the following: `http://<your server.com>/emergingdzns/laravel-mixpanel/stripe/transaction`:
+  Enter your MixPanel webhook URL, similar to the following: `http://<your server.com>/bryah/laravel-mixpanel/stripe/transaction`:
   ![screen shot 2015-05-31 at 1 35 01 pm](https://cloud.githubusercontent.com/assets/1791050/7903765/53ba6fe4-079b-11e5-9f92-a588bd81641d.png)
 
   Be sure to select "Live" if you are actually running live (otherwise put into test mode and update when you go live).
@@ -97,7 +97,7 @@ Common user events are automatically recorded:
 
 To make custom events, simple get MixPanel from the IoC using DI:
 ```php
-use Emergingdzns\LaravelMixPanel\LaravelMixPanel;
+use Bryah\LaravelMixPanel\LaravelMixPanel;
 
 class MyClass
 {
@@ -112,7 +112,7 @@ class MyClass
 
 If DI is impractical in certain situations, you can also manually retrieve it from the IoC:
 ```php
-$mixPanel = App::make('Emergingdzns\LaravelMixPanel\LaravelMixPanel');
+$mixPanel = App::make('Bryah\LaravelMixPanel\LaravelMixPanel');
 ```
 
 After that you can make the usual calls to the MixPanel API:

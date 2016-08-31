@@ -1,24 +1,20 @@
 {
-  "name": "emergingdzns/laravel-mixpanel",
+  "name": "bryah/laravel-mixpanel",
   "description": "MixPanel wrapper for Laravel 5.",
   "license": "MIT",
   "authors": [
     {
-      "name": "Emerging Designs and Mike Bronner",
+      "name": "Emerging Designs, Drive My Way and Mike Bronner",
       "email": "hello@genealabs.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Emergingdzns\\LaravelMixpanel\\": "src/"
+      "Bryah\\LaravelMixpanel\\": "src/"
     }
   },
   "require": {
     "php": ">=5.5.0",
-    "illuminate/config": "~5.0",
-    "illuminate/support": "~5.0",
-    "illuminate/events": "^5.0",
-    "illuminate/routing": "^5.0",
     "nesbot/carbon": "^1.19",
     "mixpanel/mixpanel-php": "~2.0",
     "sinergi/browser-detector": "~5.0"
@@ -28,7 +24,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Emergingdzns\\LaravelMixpanel\\Tests\\": "tests/"
+      "Bryah\\LaravelMixpanel\\Tests\\": "tests/"
     }
   }
 }

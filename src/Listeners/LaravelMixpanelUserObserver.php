@@ -1,6 +1,6 @@
-<?php namespace Emergingdzns\LaravelMixpanel\Listeners;
+<?php namespace Bryah\LaravelMixpanel\Listeners;
 
-use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
+use Bryah\LaravelMixpanel\LaravelMixpanel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -27,13 +27,6 @@ class LaravelMixpanelUserObserver
     {
         $firstName = $user->first_name;
         $lastName = $user->last_name;
-
-        if ($user->name) {
-            $nameParts = explode(' ', $user->name);
-            array_filter($nameParts);
-            $lastName = array_pop($nameParts);
-            $firstName = implode(' ', $nameParts);
-        }
 
         $data = [
             '$first_name' => $firstName,

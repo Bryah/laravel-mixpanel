@@ -1,9 +1,9 @@
-<?php namespace Emergingdzns\LaravelMixpanel\Http\Controllers;
+<?php namespace Bryah\LaravelMixpanel\Http\Controllers;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Exception;
-use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
+use Bryah\LaravelMixpanel\LaravelMixpanel;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;

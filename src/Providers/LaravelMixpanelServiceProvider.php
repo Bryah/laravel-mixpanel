@@ -1,8 +1,8 @@
-<?php namespace Emergingdzns\LaravelMixpanel\Providers;
+<?php namespace Bryah\LaravelMixpanel\Providers;
 
-use Emergingdzns\LaravelMixpanel\LaravelMixpanel;
-use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler;
-use Emergingdzns\LaravelMixpanel\Listeners\LaravelMixpanelUserObserver;
+use Bryah\LaravelMixpanel\LaravelMixpanel;
+use Bryah\LaravelMixpanel\Listeners\LaravelMixpanelEventHandler;
+use Bryah\LaravelMixpanel\Listeners\LaravelMixpanelUserObserver;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Event;
 use Illuminate\HTTP\Request;

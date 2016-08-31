@@ -1,4 +1,4 @@
-<?php namespace Emergingdzns\LaravelMixpanel;
+<?php namespace Bryah\LaravelMixpanel;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
