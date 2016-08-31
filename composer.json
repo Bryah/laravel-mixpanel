@@ -26,5 +26,6 @@
     "psr-4": {
       "Bryah\\LaravelMixpanel\\Tests\\": "tests/"
     }
-  }
+  },
+  "minimum-stability": "stable"
 }
