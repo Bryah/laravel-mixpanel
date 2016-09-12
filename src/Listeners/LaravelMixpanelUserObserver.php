@@ -51,30 +51,32 @@ class LaravelMixpanelUserObserver
      */
     public function saving(Model $user)
     {
-        $this->mixPanel->identify($user->getKey());
-        $firstName = $user->first_name;
-        $lastName = $user->last_name;
+        if ($user->profile) {
+            $this->mixPanel->identify($user->getKey());
+            $firstName = $user->first_name;
+            $lastName = $user->last_name;
 
-        if ($user->name) {
-            $nameParts = explode(' ', $user->name);
-            array_filter($nameParts);
-            $lastName = array_pop($nameParts);
-            $firstName = implode(' ', $nameParts);
-        }
+            if ($user->name) {
+                $nameParts = explode(' ', $user->name);
+                array_filter($nameParts);
+                $lastName = array_pop($nameParts);
+                $firstName = implode(' ', $nameParts);
+            }
 
-        $data = [
-            '$first_name' => $firstName,
-            '$last_name' => $lastName,
-            '$name' => $user->name,
-            '$email' => $user->email,
-            '$created' => ($user->created_at
-                ? $user->created_at->format('Y-m-d\Th:i:s')
-                : null),
-        ];
-        array_filter($data);
+            $data = [
+                '$first_name' => $firstName,
+                '$last_name' => $lastName,
+                '$name' => $user->name,
+                '$email' => $user->email,
+                '$created' => ($user->created_at
+                    ? $user->created_at->format('Y-m-d\Th:i:s')
+                    : null),
+            ];
+            array_filter($data);
 
-        if (count($data)) {
-            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
+            if (count($data)) {
+                $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
+            }
         }
     }
 
