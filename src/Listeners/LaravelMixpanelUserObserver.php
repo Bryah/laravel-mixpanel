@@ -25,25 +25,27 @@ class LaravelMixpanelUserObserver
      */
     public function created(Model $user)
     {
-        $firstName = $user->first_name;
-        $lastName = $user->last_name;
+        if (@$user->profile) {
+            $firstName = $user->first_name;
+            $lastName = $user->last_name;
 
-        $data = [
-            '$first_name' => $firstName,
-            '$last_name' => $lastName,
-            '$name' => $user->name,
-            '$email' => $user->email,
-            '$created' => ($user->created_at
-                ? $user->created_at->format('Y-m-d\Th:i:s')
-                : null),
-        ];
-        array_filter($data);
+            $data = [
+                '$first_name' => $firstName,
+                '$last_name' => $lastName,
+                '$name' => $user->name,
+                '$email' => $user->email,
+                '$created' => ($user->created_at
+                    ? $user->created_at->format('Y-m-d\Th:i:s')
+                    : null),
+            ];
+            array_filter($data);
 
-        if (count($data)) {
-            $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
+            if (count($data)) {
+                $this->mixPanel->people->set($user->getKey(), $data, $this->request->ip);
+            }
+
+            $this->mixPanel->track('User', ['Status' => 'Registered']);
         }
-
-        $this->mixPanel->track('User', ['Status' => 'Registered']);
     }
 
     /**
@@ -51,7 +53,7 @@ class LaravelMixpanelUserObserver
      */
     public function saving(Model $user)
     {
-        if ($user->profile) {
+        if (@$user->profile) {
             $this->mixPanel->identify($user->getKey());
             $firstName = $user->first_name;
             $lastName = $user->last_name;
