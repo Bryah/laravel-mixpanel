@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as CurrentRequest;
+use Cookie;
 
 class LaravelMixpanelEventHandler
 {
