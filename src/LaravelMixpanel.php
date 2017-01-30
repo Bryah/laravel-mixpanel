@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use Sinergi\BrowserDetector\Browser;
 use Sinergi\BrowserDetector\Device;
 use Sinergi\BrowserDetector\Os;
+use Cookie;
 
 class LaravelMixpanel extends \Mixpanel
 {
@@ -37,6 +38,7 @@ class LaravelMixpanel extends \Mixpanel
      */
     public function track($event, $properties = [])
     {
+        if (!Cookie::has('DMWAdminUser')) {
         if (!in_array($event, config('services.mixpanel.disabled_events')) || !config('services.mixpanel.disabled_events')) {
             $browserInfo = new Browser();
             $osInfo = new Os();
@@ -64,5 +66,6 @@ class LaravelMixpanel extends \Mixpanel
 
             parent::track($event, $data + $properties);
         }
+	}
     }
 }

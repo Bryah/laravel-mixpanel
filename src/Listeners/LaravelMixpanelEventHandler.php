@@ -51,6 +51,7 @@ class LaravelMixpanelEventHandler
      */
     public function onUserLogin(Model $user)
     {
+        if (!Cookie::has('DMWAdminUser')) {
         if (!@config('services.mixpanel.ignoredIds') || !in_array($user->id, config('services.mixpanel.ignoredIds'))) {
             $firstName = $user->first_name;
             $lastName = $user->last_name;
@@ -81,13 +82,10 @@ class LaravelMixpanelEventHandler
             }
             array_filter($data);
 
-			if (Cookie::get('DMWAdminUser')) {
-				// skip it
-			} else {
             	$this->mixPanel->identify($user->getKey());
 				$this->mixPanel->people->set($user->getKey(), $data, $this->request->ip());
 				$this->mixPanel->track('Session', ['Status' => 'Logged In']);
-			}
+	}
         }
     }
 
